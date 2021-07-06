@@ -162,6 +162,11 @@
 			<script src="moment.min.js"></script>
 			<script>
 				window.onload = () => {
+               const getWorkingHours = () => {
+                  const currentMonth = moment().month() + 1;
+                  return [6,7,8].includes(currentMonth) ? 7 : 8;
+               };
+
 					const inField = document.querySelector('#inTime');
 					const outField = document.querySelector('#outTime');
 					const lunchField = document.querySelector('#lunchTime');
@@ -174,9 +179,8 @@
 
 					inField.onblur = () => {
 						const inTime = moment(inField.value, 'HH:mm');
-
 						const estimatedLeave = inTime
-							.add(8, 'hours')
+							.add(getWorkingHours(), 'hours')
 							.add(11, 'minutes')
 							.add(parseInt(lunchField.value, 10), 'minutes')
 
@@ -192,7 +196,7 @@
 						const inTime = moment(inField.value, 'HH:mm');
 
 						const estimatedLeave = inTime
-							.add(8, 'hours')
+							.add(getWorkingHours(), 'hours')
 							.add(11, 'minutes')
 							.add(parseInt(lunchField.value, 10), 'minutes')
 
