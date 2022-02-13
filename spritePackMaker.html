@@ -1,0 +1,184 @@
+<html>
+    <head>
+        <title>Sprite pack converter</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                padding: 15px;
+            }
+
+            .edit-row {
+                padding: 10px 0 10px 0;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                border-top: 1px solid rgb(235, 232, 232);
+            }
+
+            .name-input {
+                display: flex;
+            }
+
+            .sprite-preview {
+                margin-right: 10px;
+                display: flex;
+            }
+
+            input[type="file"] {
+                display: none;
+            }
+
+            .custom-file-upload {
+                display: inline-block;
+                padding: 6px 12px;
+                cursor: pointer;
+                background-color: rgb(0, 180, 252);
+                color: whitesmoke;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <h1>Spritesheet Piskel to Libgdx converter</h1>
+
+        <h3>1. Import spritesheet image as spritesheet in <a href="https://www.piskelapp.com/p/create/sprite" target="_blank">Piskel</a> with correct grid size</h3>
+        <h3>2. Change the sprites as you wish</h3>
+        <h3>3. Choose "Export ⟶ PixJS Movie export"</h3>
+
+        <h3 style="display: inline;">4.</h3>
+        <label for="image-upload" class="custom-file-upload">
+            <i class="fa fa-cloud-upload"></i> Upload spritesheet img
+        </label>
+        <input type="file" id="image-upload" accept="image/*"/>
+        
+        <br/><br/>
+        <img id="output"/>
+
+        <div id="json-input" style="display: none;">
+            <br/><br/>
+            <h3 style="display: inline;">5.</h3>
+            <label for="json-upload" class="custom-file-upload">
+                <i class="fa fa-cloud-upload"></i> Upload spritesheet JSON
+            </label>
+            <input type="file" id="json-upload" accept="application/json"/>
+        </div>
+        <br/>
+
+        <div id="edit-container" style="display: none;">
+            <h3>6. Set sprite names</h3>
+        </div>
+        
+        <div id="convert-container" style="display: none;">
+            <br/>
+            <h3 style="display: inline;">7.</h3>
+            <label for="convert-button" class="custom-file-upload">
+                Generate .pack file
+            </label>
+            <button id="convert-button" style="display: none;"></button>    
+        </div>
+    
+        <script>
+            window.onload = () => {
+                document.getElementById('image-upload').addEventListener('change', loadImage);
+                document.getElementById('json-upload').addEventListener('change', loadJSON);
+                document.getElementById('convert-button').addEventListener('click', downloadPackFile);
+            };
+
+            let spriteUrl;
+            let spriteMap;
+
+            const loadImage = (event) => {
+                const output = document.getElementById('output');
+                const jsonButton = document.getElementById('json-input');
+
+                spriteUrl = URL.createObjectURL(event.target.files[0]);
+                
+                output.src = spriteUrl;
+                jsonButton.style.display = 'block';
+            };
+
+            const loadJSON = (event) => {
+                const reader = new FileReader();
+                reader.onload = printSpritesheet;
+                reader.readAsText(event.target.files[0]);
+            };
+
+            const printSpritesheet = (event) => {
+                spriteMap = JSON.parse(event.target.result);
+            
+                const editContainer = document.getElementById('edit-container');
+                editContainer.style.display = 'block';
+
+                Object.keys(spriteMap.frames).forEach(sprite => {
+                    const frame = spriteMap.frames[sprite].frame;
+                    const nameInput = document.createElement('input');
+                    nameInput.className = 'name-input';
+                    nameInput.id = `name-${sprite}`;
+                    nameInput.value = sprite;
+                    nameInput.style.width = 400;
+
+                    const spritePreview = document.createElement('div');
+                    spritePreview.className = 'sprite-preview';
+                    spritePreview.style.height = frame.h;
+                    spritePreview.style.width = frame.w;
+                    spritePreview.style.backgroundImage = `url(${spriteUrl})`;
+                    spritePreview.style.backgroundPosition = `-${frame.x}px -${frame.y}px`;
+
+                    const row = document.createElement('div');
+                    row.className = 'edit-row';
+                    row.id = sprite;
+                    row.style.height = frame.h + 10;
+
+                    row.appendChild(spritePreview);
+                    row.appendChild(nameInput);
+                    editContainer.appendChild(row);
+
+                    document.getElementById('convert-container').style.display = 'block';
+                });
+            };
+
+            const downloadPackFile = () => {
+                const fileContent = generatePackFile();
+                triggerDownload(fileContent);
+            };
+
+            const generatePackFile = () => {
+                let packFile = `\n`;
+                packFile += `${spriteMap.meta.image}\n`;
+                packFile += `format: ${spriteMap.meta.format}\n`;
+                packFile += `filter: Nearest,Nearest\n`;
+                packFile += `repeat: none\n`;
+
+                const spriteRows = document.querySelectorAll('.edit-row');
+                
+                spriteRows.forEach(row => {
+                    const spriteMapObject = spriteMap.frames[row.id].frame;
+                    const spriteName = document.getElementById('name-' + row.id).value;
+                    
+                    packFile += `${spriteName}\n`;
+                    packFile += `  rotate: false\n`;
+                    packFile += `  xy: ${spriteMapObject.x}, ${spriteMapObject.y}\n`;
+                    packFile += `  size: ${spriteMapObject.w}, ${spriteMapObject.h}\n`;
+                    packFile += `  orig: ${spriteMapObject.w}, ${spriteMapObject.h}\n`;
+                    packFile += `  offset: 0, 0\n`;
+                    packFile += `  index: -1\n`;
+                });
+
+                return packFile;
+            };
+
+            const triggerDownload = (fileContent) => {
+                const element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(fileContent));
+                element.setAttribute('download', spriteMap.meta.image.replace(/\..*$/, '.pack'));
+
+                element.style.display = 'none';
+                document.body.appendChild(element);
+
+                element.click();
+
+                document.body.removeChild(element);
+            };
+        </script>
+    </body>
+</html>
