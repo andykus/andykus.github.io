@@ -36,7 +36,7 @@ class CelestialBody {
     updatePath() {
         this.path.push(this.pos.copy());
         
-        if (this.path.length > 100) {
+        if (this.path.length > 400) {
             this.path.splice(0, 1);
         }
     }
