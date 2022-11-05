@@ -45,7 +45,7 @@ class CelestialBody {
         this.pos.x += this.velocity.x;
         this.pos.y += this.velocity.y;
 
-        this.path.push(this.pos.copy());
+        this.updatePath();
     }
 
     drawPath() {
