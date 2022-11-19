@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Da cube</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="input-area">
+            <textarea id="inputEl">
+setpensize 3 repeat 4 [fd 200 rt 90] pu fd 30 rt 90 fd 30 lt 90 pd repeat 4 [fd 140 rt 90]
+            </textarea>
+            <div id="hints">
+                <u><b>Syntax</b></u>
+                <span><b>fd &lt;X&gt;</b> - Move forward by X steps</span>
+                <span><b>bk &lt;X&gt;</b> - Move back by X steps</span>
+                <span><b>lt &lt;X&gt;</b> - Rotate left by X degrees</span>
+                <span><b>rt &lt;X&gt;</b> - Rotate right by X degrees</span>
+                <span><b>pu</b> - Lift the pen up</span>
+                <span><b>pd</b> - Set the pen down</span>
+                <span><b>repeat &lt;X&gt; [&lt;Y&gt;]</b> - Perform the Y instructions X times</span>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+        <script src="script/constants.js"></script>
+        <script src="script/commandParser.js"></script>
+        <script src="script/turtle.js"></script>
+        <script src="script/index.js"></script>
+    </body>
+</html>
