@@ -6,7 +6,8 @@ const calendar = [
         day: -4, 
         beer: 'Finn Railyard IPA',
         rating: 4, 
-        rhyme: 'Dag för dag, en i sänder\nHär är starten på din egen kalender!'
+        rhyme: 'Dag för dag, en i sänder\nHär är starten på din egen kalender!',
+        tastingNotes: 'God, men väldigt vattnig'
     }    
 ];
 
@@ -40,7 +41,17 @@ const getRating = (day) => {
         return '';
     }
 
-    return `Betyg: ${calendarDay.rating}`;
+    return `<b>Betyg:</b> <i>${calendarDay.rating}</i>`;
+};
+
+const getTastingNotes = (day) => {
+    const calendarDay = calendar.find(c => c.day === day);
+
+    if (!calendarDay) {
+        return '';
+    }
+
+    return `<b>Tasting notes:</b> <i>${calendarDay.tastingNotes}</i>`;
 };
 
 const getThumbnail = (day) => {
@@ -77,8 +88,9 @@ for (let i = minDay; i <= maxDay; i++) {
     <div class="info-card">
         <h4>${getName(i)}</h4>
         <pre><p>${getRhyme(i)}</p></pre>
-        <p><b>${getRating(i)}</b></p>
-    </div>
+        <p class="notes">${getTastingNotes(i)}</p>
+        <p class="notes">${getRating(i)}</p>
+        </div>
     <div class="image">
         <img class="thumbnail" src="${getThumbnail(i)}" />
     </div>

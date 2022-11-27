@@ -7,6 +7,15 @@ Grön #495e3e
 
 */
 
+p {
+    font-size: 14px;    
+}
+
+.notes {
+    margin: 4px;
+    font-size: 14px;
+}
+
 .snowflake {
     color: #fff;
     font-size: 0.7em;
@@ -31,9 +40,8 @@ body {
     flex-direction: column;
     width: 80%;
     background-color: #FCF7FF;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     height: max-content;
 }
 
@@ -44,15 +52,16 @@ body {
     align-items: center;
     font-size: 32px;
     background-color: #C4CAD0;
-    border-radius: 10px 10px 0 0;
+    border-radius: 15px 15px 0 0;
     color: #082F3D;
     height: 150px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .thumbnail {
     height: auto;
     width: 100px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .day-card {
@@ -62,8 +71,9 @@ body {
     align-items: center;
     width: 550px;
     background-color: #C4CAD0;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .info-card {
@@ -108,11 +118,12 @@ body {
     padding: 10px;
     align-items: center;
     background-color: #C4CAD0;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 10px;
     align-self: center;
     min-width: 200px;
     padding: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 #top-beers {
