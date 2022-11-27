@@ -1,0 +1,93 @@
+const minDay = -4;
+const maxDay = 24;
+
+const calendar = [
+    { 
+        day: -4, 
+        beer: 'Finn Railyard IPA',
+        rating: 4, 
+        rhyme: 'Dag för dag, en i sänder\nHär är starten på din egen kalender!'
+    }    
+];
+
+const calendarEl = document.querySelector('#calendar');
+const topBeersEl = document.querySelector('#top-beers');
+
+const getName = (day) => {
+    const calendarDay = calendar.find(c => c.day === day);
+
+    if (!calendarDay) {
+        return '';
+    }
+
+    return calendarDay.beer;
+};
+
+const getRhyme = (day) => {
+    const calendarDay = calendar.find(c => c.day === day);
+
+    if (!calendarDay) {
+        return 'Ej öppnad';
+    }
+
+    return calendarDay.rhyme;
+};
+
+const getRating = (day) => {
+    const calendarDay = calendar.find(c => c.day === day);
+
+    if (!calendarDay) {
+        return '';
+    }
+
+    return `Betyg: ${calendarDay.rating}`;
+};
+
+const getThumbnail = (day) => {
+    const calendarDay = calendar.find(c => c.day === day);
+
+    if (!calendarDay) {
+        return 'unopened.jpg';
+    }
+
+    return `${calendarDay.day}.jpg`;
+};
+
+const getTopBeers = () => {
+    const calendarClone = calendar.slice();
+    calendarClone.sort((a, b) => b.rating - a.rating);
+    return calendarClone.slice(0, 3);
+};
+
+const scrollToDay = (day) => {
+    const el = document.querySelector(`.day-${day}`);
+    el.scrollIntoView({behavior: "smooth"});
+};
+
+for (let i = minDay; i <= maxDay; i++) {
+    if (i === 0) {
+        continue;
+    }
+
+    calendarEl.innerHTML += `
+    <div class="day-card day-${i}">
+    <div class="day-container">
+        <h2 class="lucka"><pre>Lucka\n${i}</pre></h2>
+    </div>
+    <div class="info-card">
+        <h4>${getName(i)}</h4>
+        <pre><p>${getRhyme(i)}</p></pre>
+        <p><b>${getRating(i)}</b></p>
+    </div>
+    <div class="image">
+        <img class="thumbnail" src="${getThumbnail(i)}" />
+    </div>
+</div>
+    `;
+}
+
+getTopBeers().forEach(b => {
+    topBeersEl.innerHTML += `
+        <span style="margin: 5px; cursor: pointer; text-decoration: underline;" onclick="scrollToDay(${b.day})"><b>${b.beer}</b> (Lucka ${b.day})</span>
+    `;
+});
