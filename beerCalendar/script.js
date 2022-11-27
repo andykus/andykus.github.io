@@ -7,7 +7,7 @@ const calendar = [
         beer: 'Finn Railyard IPA',
         rating: 4, 
         rhyme: 'Dag för dag, en i sänder\nHär är starten på din egen kalender!',
-        tastingNotes: 'God, men väldigt vattnig'
+        tastingNotes: 'God smak, men väldigt vattnig'
     }    
 ];
 
