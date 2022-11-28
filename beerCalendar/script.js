@@ -8,6 +8,13 @@ const calendar = [
         rating: 4, 
         rhyme: 'Dag för dag, en i sänder\nHär är starten på din egen kalender!',
         tastingNotes: 'God smak, men väldigt vattnig'
+    },
+    { 
+        day: -3, 
+        beer: 'Fatamorgana FOLK',
+        rating: 7, 
+        rhyme: 'Skrik ut ett bröl,\nhär får du en riktig folköl',
+        tastingNotes: 'Blandning av IPA och veteöl, mycket smak!'
     }    
 ];
 
