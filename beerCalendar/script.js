@@ -13,9 +13,16 @@ const calendar = [
         day: -3, 
         beer: 'Fatamorgana FOLK',
         rating: 7, 
-        rhyme: 'Skrik ut ett bröl,\nhär får du en riktig folköl',
+        rhyme: 'Skrik ut ett bröl,\nhär får du en riktig folköl!',
         tastingNotes: 'Blandning av IPA och veteöl, mycket smak!'
-    }    
+    },
+    { 
+        day: -2, 
+        beer: 'Örebro brygghus Cassis',
+        rating: 5, 
+        rhyme: 'Har hört att en öl om dagen,\när riktigt bra för magen!',
+        tastingNotes: 'Smakade mer som läsk än öl'
+    },
 ];
 
 const calendarEl = document.querySelector('#calendar');
