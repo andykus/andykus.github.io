@@ -23,6 +23,13 @@ const calendar = [
         rhyme: 'Har hört att en öl om dagen,\när riktigt bra för magen!',
         tastingNotes: 'Smakade mer som läsk än öl'
     },
+    { 
+        day: -1, 
+        beer: 'Bron IPA',
+        rating: 6, 
+        rhyme: 'Om du vill i Danmark härja,\nkandu ta en färja,\nOm inte kanske du kan ro?\nEller kanske ta en ____!',
+        tastingNotes: 'Lite fruktig och inte särskilt bitig. Smakar lite brown ale.'
+    },
 ];
 
 const calendarEl = document.querySelector('#calendar');
