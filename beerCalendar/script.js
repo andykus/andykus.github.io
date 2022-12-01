@@ -68,7 +68,7 @@ const getRating = (day) => {
 const getTastingNotes = (day) => {
     const calendarDay = calendar.find(c => c.day === day);
 
-    if (!calendarDay) {
+    if (!calendarDay || !calendarDay.tastingNotes) {
         return '';
     }
 
