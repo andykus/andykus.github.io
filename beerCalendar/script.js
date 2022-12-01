@@ -58,7 +58,7 @@ const getRhyme = (day) => {
 const getRating = (day) => {
     const calendarDay = calendar.find(c => c.day === day);
 
-    if (!calendarDay || calendarDay.rating) {
+    if (!calendarDay || !calendarDay.rating) {
         return '';
     }
 
