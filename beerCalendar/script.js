@@ -30,6 +30,13 @@ const calendar = [
         rhyme: 'Om du vill i Danmark härja,\nkandu ta en färja,\nOm inte kanske du kan ro?\nEller kanske ta en ____!',
         tastingNotes: 'Lite fruktig och inte särskilt bitig. Smakar lite brown ale.'
     },
+    { 
+        day: 1, 
+        beer: 'Expectations',
+        rating: 9, 
+        rhyme: 'En sak vi vet är hög är räntan\nMen frågan har hur uppfyller denna din förväntan?\nNär du har den i din famn,\nfår vi se om den lever upp till sitt namn!
+        tastingNotes: 'Söt, stark och jäkligt god!'
+    }    
 ];
 
 const calendarEl = document.querySelector('#calendar');
