@@ -34,7 +34,7 @@ const calendar = [
         day: 1, 
         beer: 'Expectations',
         rating: 9, 
-        rhyme: 'En sak vi vet är hög är räntan\nMen frågan har hur uppfyller denna din förväntan?\nNär du har den i din famn,\nfår vi se om den lever upp till sitt namn!
+        rhyme: 'En sak vi vet är hög är räntan\nMen frågan har hur uppfyller denna din förväntan?\nNär du har den i din famn,\nfår vi se om den lever upp till sitt namn!',
         tastingNotes: 'Söt, stark och jäkligt god!'
     }    
 ];
