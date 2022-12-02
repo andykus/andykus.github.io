@@ -38,7 +38,7 @@ const calendar = [
         tastingNotes: 'Söt, stark och extremt god!'
     },
     { 
-        day: 1, 
+        day: 2, 
         beer: 'Sur-olle',
         rating: 2, 
         rhyme: 'Har du jobbat med vår produktspecialist?<br/>Har han kanske blivit lite pist?<br/>Jag tror han fått ett riktigt ryck,<br/>Och tillverkat sin egen dryck!!',
