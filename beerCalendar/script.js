@@ -33,10 +33,17 @@ const calendar = [
     { 
         day: 1, 
         beer: 'Expectations',
-        rating: 9, 
+        rating: 10, 
         rhyme: 'En sak vi vet är hög är räntan<br/>Men frågan har hur uppfyller denna din förväntan?<br/>När du har den i din famn,<br/>får vi se om den lever upp till sitt namn!',
-        tastingNotes: 'Söt, stark och jäkligt god!'
-    }    
+        tastingNotes: 'Söt, stark och extremt god!'
+    },
+    { 
+        day: 1, 
+        beer: 'Sur-olle',
+        rating: 2, 
+        rhyme: 'Har du jobbat med vår produktspecialist?<br/>Har han kanske blivit lite pist?<br/>Jag tror han fått ett riktigt ryck,<br/>Och tillverkat sin egen dryck!!',
+        tastingNotes: 'Smakade som sur, kolsyrad lakrits 😱'
+    }  
 ];
 
 const calendarEl = document.querySelector('#calendar');
