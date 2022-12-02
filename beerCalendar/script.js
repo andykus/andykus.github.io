@@ -6,35 +6,35 @@ const calendar = [
         day: -4, 
         beer: 'Finn Railyard IPA',
         rating: 4, 
-        rhyme: 'Dag för dag, en i sänder\nHär är starten på din egen kalender!',
+        rhyme: 'Dag för dag, en i sänder<br/>Här är starten på din egen kalender!',
         tastingNotes: 'God smak, men väldigt vattnig'
     },
     { 
         day: -3, 
         beer: 'Fatamorgana FOLK',
         rating: 7, 
-        rhyme: 'Skrik ut ett bröl,\nhär får du en riktig folköl!',
+        rhyme: 'Skrik ut ett bröl,<br/>här får du en riktig folköl!',
         tastingNotes: 'Blandning av IPA och veteöl, mycket smak!'
     },
     { 
         day: -2, 
         beer: 'Örebro brygghus Cassis',
         rating: 5, 
-        rhyme: 'Har hört att en öl om dagen,\när riktigt bra för magen!',
+        rhyme: 'Har hört att en öl om dagen,<br/>är riktigt bra för magen!',
         tastingNotes: 'Smakade mer som läsk än öl'
     },
     { 
         day: -1, 
         beer: 'Bron IPA',
         rating: 6, 
-        rhyme: 'Om du vill i Danmark härja,\nkandu ta en färja,\nOm inte kanske du kan ro?\nEller kanske ta en ____!',
+        rhyme: 'Om du vill i Danmark härja,<br/>kandu ta en färja,<br/>Om inte kanske du kan ro?<br/>Eller kanske ta en ____!',
         tastingNotes: 'Lite fruktig och inte särskilt bitig. Smakar lite brown ale.'
     },
     { 
         day: 1, 
         beer: 'Expectations',
         rating: 9, 
-        rhyme: 'En sak vi vet är hög är räntan\nMen frågan har hur uppfyller \ndenna din förväntan?\nNär du har den i din famn,\nfår vi se om den lever upp till sitt namn!',
+        rhyme: 'En sak vi vet är hög är räntan<br/>Men frågan har hur uppfyller denna din förväntan?<br/>När du har den i din famn,<br/>får vi se om den lever upp till sitt namn!',
         tastingNotes: 'Söt, stark och jäkligt god!'
     }    
 ];
@@ -115,7 +115,7 @@ for (let i = minDay; i <= maxDay; i++) {
     </div>
     <div class="info-card">
         <h4>${getName(i)}</h4>
-        <pre><p>${getRhyme(i)}</p></pre>
+        <p>${getRhyme(i)}</p>
         <p class="notes">${getTastingNotes(i)}</p>
         <p class="notes">${getRating(i)}</p>
         </div>
