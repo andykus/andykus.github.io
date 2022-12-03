@@ -43,16 +43,14 @@ const calendar = [
         rating: 2, 
         rhyme: 'Har du jobbat med vår produktspecialist?<br/>Har han kanske blivit lite pist?<br/>Jag tror han fått ett riktigt ryck,<br/>Och tillverkat sin egen dryck!!',
         tastingNotes: 'Smakade som sur, kolsyrad lakrits 😱'
-    }, 
-    /*
+    },
     { 
         day: 3, 
         beer: 'Forever Sun IPA',
-        rating: ??, 
+        rating: 8, 
         rhyme: 'Sätt dig på en stol,<br/>Öppna och lys upp som en sol,<br/>Får hoppas att innehållet i denna burk,<br/>Får dig att vilja ta en slurk!',
-        tastingNotes: '??'
+        tastingNotes: 'Stark beska och apelsin!'
     }, 
-    */
 ];
 
 const calendarEl = document.querySelector('#calendar');
