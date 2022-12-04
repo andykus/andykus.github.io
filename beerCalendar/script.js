@@ -50,6 +50,13 @@ const calendar = [
         rating: 8, 
         rhyme: 'Sätt dig på en stol,<br/>Öppna och lys upp som en sol,<br/>Får hoppas att innehållet i denna burk,<br/>Får dig att vilja ta en slurk!',
         tastingNotes: 'Stark beska och apelsin!'
+    },
+    { 
+        day: 4, 
+        beer: 'Hyttpilsner',
+        rating: 7, 
+        rhyme: 'Förr i tiden ordnade man hyttsill inför jul.<br/>Att anordna en sån själv känns som ett jäkla strul.<br/>Men om du hyr dig ett sådan hak,<br/>Så kan du ta med denna sak.',
+        tastingNotes: 'Ganska mild och god pilsnersmak'
     }, 
 ];
 
