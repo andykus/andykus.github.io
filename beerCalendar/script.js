@@ -57,6 +57,20 @@ const calendar = [
         rating: 7, 
         rhyme: 'Förr i tiden ordnade man hyttsill inför jul.<br/>Att anordna en sån själv känns som ett jäkla strul.<br/>Men om du hyr dig ett sådan hak,<br/>Så kan du ta med denna sak.',
         tastingNotes: 'Ganska mild och god pilsnersmak'
+    },
+    { 
+        day: 5, 
+        beer: 'Cool Cat Hazy session IPA',
+        rating: 8, 
+        rhyme: 'Detta är nog ingen skatt.<br/>Men kanske kan den locka fram ett skratt?<br/>Den sitter där häftig, cool men utan hatt.<br/>Men jag vet att du kommer gilla denna katt!',
+        tastingNotes: 'Blommig smak och mycket besk'
+    }, 
+    { 
+        day: 6, 
+        beer: '???',
+        rating: 7, 
+        rhyme: 'Hur tröstar man en vegetarian?<br/>- Soja soja ingefära!',
+        tastingNotes: 'Smakade ingefära'
     }, 
 ];
 
