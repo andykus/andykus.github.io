@@ -57,7 +57,7 @@ const calendar = [
         rating: 7, 
         rhyme: 'Förr i tiden ordnade man hyttsill inför jul.<br/>Att anordna en sån själv känns som ett jäkla strul.<br/>Men om du hyr dig ett sådan hak,<br/>Så kan du ta med denna sak.',
         tastingNotes: 'Ganska mild och god pilsnersmak'
-    },
+    }, 
     { 
         day: 5, 
         beer: 'Cool Cat Hazy session IPA',
@@ -72,6 +72,41 @@ const calendar = [
         rhyme: 'Hur tröstar man en vegetarian?<br/>- Soja soja ingefära!',
         tastingNotes: 'Smakade ingefära'
     }, 
+    { 
+        day: 7, 
+        beer: 'Q lager',
+        rating: 6, 
+        rhyme: 'Du är allt lite mager,<br/>så här kommer en riktig lager.',
+        tastingNotes: 'Tror inte det är honung i, men den smakade mest honung'
+    }, 
+    { 
+        day: 8, 
+        beer: 'Kåtöl',
+        rating: 5, 
+        rhyme: 'Det kan vara svårt,<br/>Att vara ensam & kåt.<br/>Kanske kan denna öl råda bot?<br/>Men häll den inte på din fot.',
+        tastingNotes: 'Smakade knappt något'
+    },
+    { 
+        day: 9, 
+        beer: 'Well done',
+        rating: 9, 
+        rhyme: '"Bra jobbat" säger denna bira,<br/>så ta fram den och börja fira!',
+        tastingNotes: 'Väldigt god och bra balans mellan blommig och beska'
+    },
+    { 
+        day: 10, 
+        beer: 'Just As Amazing Haze',
+        rating: '', 
+        rhyme: 'Dessa smakrika fröjder<br/>tar dig till himelska höjder.<br/>Hoppas du blir riktigt nöjder',
+        tastingNotes: 'TBD'
+    },
+    { 
+        day: 11, 
+        beer: 'Lager than life',
+        rating: '', 
+        rhyme: 'Denna öl är större än livet,<br/>det står tillochmed skrivet!',
+        tastingNotes: 'TBD'
+    },
 ];
 
 const calendarEl = document.querySelector('#calendar');
@@ -128,7 +163,7 @@ const getThumbnail = (day) => {
 };
 
 const getTopBeers = () => {
-    const calendarClone = calendar.slice();
+    const calendarClone = calendar.slice().filter(c => !!c.rating);
     calendarClone.sort((a, b) => b.rating - a.rating);
     return calendarClone.slice(0, 3);
 };
