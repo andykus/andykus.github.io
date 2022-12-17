@@ -96,15 +96,57 @@ const calendar = [
     { 
         day: 10, 
         beer: 'Just As Amazing Haze',
-        rating: '', 
+        rating: 6, 
         rhyme: 'Dessa smakrika fröjder<br/>tar dig till himelska höjder.<br/>Hoppas du blir riktigt nöjder',
-        tastingNotes: 'TBD'
+        tastingNotes: 'Not quite as amazing'
     },
     { 
         day: 11, 
         beer: 'Lager than life',
-        rating: '', 
+        rating: 5, 
         rhyme: 'Denna öl är större än livet,<br/>det står tillochmed skrivet!',
+        tastingNotes: 'Besk på ett dåligt sätt!'
+    },
+    { 
+        day: 12, 
+        beer: 'Super bock',
+        rating: 7, 
+        rhyme: 'Denna ölen kommer från ett land<br/>där det finns en fin strand,<br/>Ett land där Emmaaa bott, det hade du väl aldrig trott?<br/>Namnet rimmar på chock<br/>vet inte om de tänkte på en geta____?',
+        tastingNotes: 'Trea på PBR-skalan!'
+    },
+    { 
+        day: 13, 
+        beer: 'Råå ölglögg',
+        rating: '', 
+        rhyme: 'Ta fram en kopp och njut!<br/>Hoppas du gillar den, absolut!<br/>Innehållet är en god present,<br/>Men tänk på att den innehåller procent..',
+        tastingNotes: 'TBD'
+    },
+    { 
+        day: 14, 
+        beer: 'Två feta grisar - Chill in',
+        rating: 8, 
+        rhyme: 'Den här klappen ska vara riktigt stark,<br/>Hoppas inte den klassas som knark?<br/>Hoppas du har tillräckligt med mod<br/>Så du smakar och inser att den är god.',
+        tastingNotes: 'Stark och smakade färsk chili. Inte jättegott, men skoj!'
+    },
+    { 
+        day: 15, 
+        beer: 'Migla hazy IPA',
+        rating: '', 
+        rhyme: 'Om du sitter i knipa,<br/>Eller behöver på dina kunskaper slipa,<br/>Ta då denna hazy ___!',
+        tastingNotes: 'TBD'
+    },
+    { 
+        day: 16, 
+        beer: 'Taco Taco',
+        rating: '', 
+        rhyme: 'Take and go, a taste of Mexico!<br/>Hoppas du gillar mexikanska seder,<br/>Nu får vi se vart detta leder.<br/>Öppna paketet där du bor<br/>Smakupplevelsen är naturligtvis stor!',
+        tastingNotes: 'TBD'
+    },
+    { 
+        day: 17, 
+        beer: 'Lardy-Dardy',
+        rating: '', 
+        rhyme: 'Den kommer från en granne,<br/>Och i det landet känner vi en "hanne",<br/>Hannens namn rimmar på golf,<br/>Ja självklart tänker jag på Rolf!',
         tastingNotes: 'TBD'
     },
 ];
