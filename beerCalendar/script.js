@@ -117,9 +117,9 @@ const calendar = [
     { 
         day: 13, 
         beer: 'Råå ölglögg',
-        rating: '', 
+        rating: 8, 
         rhyme: 'Ta fram en kopp och njut!<br/>Hoppas du gillar den, absolut!<br/>Innehållet är en god present,<br/>Men tänk på att den innehåller procent..',
-        tastingNotes: 'TBD'
+        tastingNotes: 'Den smakade mest som vanlig glögg men utan den sliskiga eftersmaken!'
     },
     { 
         day: 14, 
@@ -131,24 +131,50 @@ const calendar = [
     { 
         day: 15, 
         beer: 'Migla hazy IPA',
-        rating: '', 
+        rating: 7, 
         rhyme: 'Om du sitter i knipa,<br/>Eller behöver på dina kunskaper slipa,<br/>Ta då denna hazy ___!',
-        tastingNotes: 'TBD'
+        tastingNotes: 'Stack inte ut åt något håll'
     },
     { 
         day: 16, 
         beer: 'Taco Taco',
-        rating: '', 
+        rating: 8, 
         rhyme: 'Take and go, a taste of Mexico!<br/>Hoppas du gillar mexikanska seder,<br/>Nu får vi se vart detta leder.<br/>Öppna paketet där du bor<br/>Smakupplevelsen är naturligtvis stor!',
-        tastingNotes: 'TBD'
+        tastingNotes: 'En smakrik lager som troligen hade passat fint till Tacos!'
     },
     { 
         day: 17, 
         beer: 'Lardy-Dardy',
-        rating: '', 
+        rating: 5, 
         rhyme: 'Den kommer från en granne,<br/>Och i det landet känner vi en "hanne",<br/>Hannens namn rimmar på golf,<br/>Ja självklart tänker jag på Rolf!',
+        tastingNotes: 'Inte den bästa!'
+    },
+    { 
+        day: 18, 
+        beer: 'Stallhagen Honungsöl',
+        rating: '', 
+        rhyme: 'Den här kan ingen människa producera<br/>Nej det behövs några hundra små, kanske flera!<br/>Som flyger fram och tillbaka hela dagen<br/>och gör så det här smakar gott i magen',
         tastingNotes: 'TBD'
     },
+    { 
+        day: 19, 
+        beer: 'PrinsKatts Breakfast IPA',
+        rating: '', 
+        rhyme: 'Innan du till jobbet far, måste frukosten vara klar!<br/>Det behövs en lite morgondryck,<br/>Kanske man borde köpt flera styck?',
+        tastingNotes: 'TBD'
+    },
+    { 
+        day: 20, 
+        beer: 'BunnyHopped Into the Haze',
+        rating: '', 
+        rhyme: 'Bryggeriet heter "skäggiga kaninen" typ,<br/>Och jag gillar skarpt deras logotyp<br/>Kunde inte annat än löpa<br/>direkt till systemet och köpa!'
+    },
+    { 
+        day: 21, 
+        beer: 'Mikeller Kærlighed',
+        rating: '', 
+        rhyme: 'När du ska supa dig full<br/>Så du ramlar omkull<br/>Kan detta va en bra start,<br/>det är ju uppenbart'
+    },    
 ];
 
 const calendarEl = document.querySelector('#calendar');
