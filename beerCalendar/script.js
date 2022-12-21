@@ -154,14 +154,12 @@ const calendar = [
         beer: 'Stallhagen Honungsöl',
         rating: '', 
         rhyme: 'Den här kan ingen människa producera<br/>Nej det behövs några hundra små, kanske flera!<br/>Som flyger fram och tillbaka hela dagen<br/>och gör så det här smakar gott i magen',
-        tastingNotes: 'TBD'
     },
     { 
         day: 19, 
         beer: 'PrinsKatts Breakfast IPA',
         rating: '', 
         rhyme: 'Innan du till jobbet far, måste frukosten vara klar!<br/>Det behövs en lite morgondryck,<br/>Kanske man borde köpt flera styck?',
-        tastingNotes: 'TBD'
     },
     { 
         day: 20, 
