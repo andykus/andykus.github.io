@@ -172,6 +172,24 @@ const calendar = [
         beer: 'Mikeller Kærlighed',
         rating: '', 
         rhyme: 'När du ska supa dig full<br/>Så du ramlar omkull<br/>Kan detta va en bra start,<br/>det är ju uppenbart'
+    },
+    { 
+        day: 22, 
+        beer: 'Brewski Strawberry Pie',
+        rating: '', 
+        rhyme: 'Bli inte skraj<br/>Men kanske smakar denna paj!<br/>Det är en öl, ingen nubbe<br/>Hoppas den kan passa denne gubbe.'
+    },
+    { 
+        day: 23, 
+        beer: 'Crispy lager',
+        rating: '', 
+        rhyme: 'Köp en påse chips på vägen hem, här har du en bira,<br/>Då är du redo att julhelgen fira!'
+    },
+    { 
+        day: 24, 
+        beer: 'Semedorato',
+        rating: '', 
+        rhyme: 'Flaskan har en rätt vanlig form<br/>Men jag tycker den är enorm!<br/>Om du kan denna ölen häva,<br/>Kanske den får dig agg sväva?'
     },    
 ];
 
