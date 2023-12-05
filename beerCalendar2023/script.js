@@ -19,27 +19,28 @@ const calendar = [
     { 
         day: 2, 
         beer: 'Hypno goat',
-        rating: 7, 
+        rating: 6, 
         rhyme: 'Ny är det nån som är snurrig & yr!<br/>Kanske så förvirrad att hen spyr?<br/>I en saga trippar hen på en bro,<br/>men vanligtvis står hen mest och "glo".',
         tastingNotes: 'God smak men liite för söt!'
     }, 
     { 
         day: 3, 
         beer: 'Nelson IPA',
-        rating: '', 
+        rating: 7, 
         rhyme: 'Hör och häpna! Det är en gammal munk<br/>som inspirerat din framtida klunk.<br/>Du kan använda ölen som ett plåster,<br/>medan munkarna fortsätter gå i kloster.',
         tastingNotes: ''
+        // tastingNotes: 'Väldigt IPIG! Inte dum alls!'
     }, 
     { 
         day: 4, 
-        beer: 'Ej öppnad',
+        beer: 'Röksvamp',
         rating: '', 
         rhyme: 'Denna öl passar kanske inte denna gossen,<br/>men i så fall skulle du kunna ge den till bossen?<br/>Drycken innehåller till viss del rök.<br/>Perfekt att bjuda på vid oväntat besök?',
         tastingNotes: ''
     }, 
     { 
         day: 5, 
-        beer: 'Ej öppnad',
+        beer: 'Revision Cold IPA',
         rating: '', 
         rhyme: 'Företagarna sina siffror boka,<br/>sen kommer dessa och vill snoka!<br/>De granskar varje siffra i kundens RÅ<br/>Om allt stämmer - ett leende de få!',
         tastingNotes: ''
