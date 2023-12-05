@@ -26,7 +26,8 @@ const calendar = [
     { 
         day: 3, 
         beer: 'Nelson IPA',
-        rating: 7, 
+        // rating: 7, 
+        rating: '',
         rhyme: 'Hör och häpna! Det är en gammal munk<br/>som inspirerat din framtida klunk.<br/>Du kan använda ölen som ett plåster,<br/>medan munkarna fortsätter gå i kloster.',
         tastingNotes: ''
         // tastingNotes: 'Väldigt IPIG! Inte dum alls!'
