@@ -35,8 +35,6 @@
                 }, 0)) % 10 == 0;
             };
 
-
-            const source = document.querySelector('#source');
             const orgNumOutput = document.querySelector('#orgNumOutput');
             const orgNumInvalid = document.querySelector('#orgNumInvalid');
             const orgNumInput = document.querySelector('#orgNumInput');
@@ -53,7 +51,7 @@
             };
 
             orgNumInput.addEventListener('change', (e) => {
-                let val = e.currentTarget.value.replace('-', '');
+                let val = e.currentTarget.value.replace('-', '').trim();
 
                 if (val.length === 12) {
                     val = val.substring(2);
