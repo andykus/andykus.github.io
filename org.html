@@ -19,26 +19,95 @@
             p {
                 font-family: Arial,serif;
                 font-size: 28px;
+
+            }
+            span {
+                margin: 0;
+            }
+
+            .notImportant {
+                color: #ccc;
+            }
+
+            .explanation {
+                font-size: 15px;
+                font-style: italic;
+                margin: 5px;
+            }
+
+            .explanationContainer {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .legend {
+                display: none;
+                flex-direction: column;
+                align-items: center;
             }
         </style>
     </head>
     <body>
         <input placeholder="Fyll i organisationsnummer" type="text" id="orgNumInput" />
-        <p id="orgNumOutput" style="display: none;">Bolagsform: <span style="font-weight: bold" id="companyType">&nbsp;</span></p>
+        <p id="orgNumOutput" style="display: none; margin-bottom: 0;">Bolagsform: <span style="font-weight: bold" id="companyType">&nbsp;</span></p>
         <p id="orgNumInvalid" style="display: none;">Organisationsnumret är ogiltigt</p>
-        <br>
-        <p id="source" style="font-size: 14px;">Källa: <a href="https://sv.wikipedia.org/wiki/Organisationsnummer">Wikipedia</a></p>
+        <div id="personLegend" class="legend">
+            <p style="font-weight: bold; display: flex;">
+                <span class="notImportant" id="personLeadingDigits"></span>
+                <span class="notImportant" id="personYear"></span>
+                <span class="personMonth"></span>
+                <span class="notImportant" id="personRest"></span>
+                <span class="personControl"></span>
+            </p>
+            <div class="explanationContainer">
+                <p class="explanation">Andra sifferparet (<b class="personMonth"></b>) är lägre än 13. Detta garanterar att det är ett personnummer / EF.</p>
+                <p class="explanation">Kontrollsiffra <b class="personControl"></b> är giltig enligt Luhn-algoritmen.</p>
+            </div>
+        </div>
+        <div id="companyLegend" class="legend">
+            <p style="font-weight: bold; display: flex;">
+                <span class="companyId"></span>
+                <span class="notImportant" id="companySecond"></span>
+                <span class="companySecondPair"></span>
+                <span class="notImportant" id="companyRest"></span>
+                <span class="companyControl"></span>
+            </p>
+            <div class="explanationContainer">
+                <p class="explanation">Siffran <b class="companyId"></b> avslöjar bolagsformen.</p>
+                <p class="explanation">Andra sifferparet (<b class="companySecondPair"></b>) är högre än 19, detta garanterar att det är ett organisationsnummer.</p>
+                <p class="explanation">Kontrollsiffra <b class="companyControl"></b> är giltig enligt Luhn-algoritmen.</p>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <p id="source" style="font-size: 14px;">Källa: <a target="_blank" href="https://sv.wikipedia.org/wiki/Organisationsnummer">Wikipedia</a></p>
         <script>
             const validLuhn = (val) => {
                 return !/^\d+$/.test(val) || (val.split('').reduce(function(sum, d, n){
                     return sum + parseInt(((n + val.length) %2)? d: [0,2,4,6,8,1,3,5,7,9][d]);
-                }, 0)) % 10 == 0;
+                }, 0)) % 10 === 0;
             };
 
             const orgNumOutput = document.querySelector('#orgNumOutput');
             const orgNumInvalid = document.querySelector('#orgNumInvalid');
             const orgNumInput = document.querySelector('#orgNumInput');
             const companyTypeOutput = document.querySelector('#companyType');
+            const personLegend = document.querySelector('#personLegend');
+            const companyLegend = document.querySelector('#companyLegend');
+            const personLeadingDigitsOutput = document.querySelector('#personLeadingDigits');
+            const personYear = document.querySelector('#personYear');
+            const personMonth = document.querySelectorAll('.personMonth');
+            const personRest = document.querySelector('#personRest');
+            const personControl = document.querySelectorAll('.personControl');
+            const companyId = document.querySelectorAll('.companyId');
+            const companySecond = document.querySelector('#companySecond');
+            const companySecondPair = document.querySelectorAll('.companySecondPair');
+            const companyRest = document.querySelector('#companyRest');
+            const companyControlDigit = document.querySelectorAll('.companyControl');
+
 
             const orgTypeMap = {
                 '1': 'Dödsbo',
@@ -50,32 +119,59 @@
                 '9': 'Handelsbolag / Kommanditbolag'
             };
 
+            const resetVisibility = () => {
+                companyLegend.style.display = 'none';
+                personLegend.style.display = 'none';
+                orgNumOutput.style.display = 'none';
+                orgNumInvalid.style.display = 'none';
+            };
+
+            const showPersonLegend = (leadingDigits, val) => {
+                personLegend.style.display = 'flex';
+                personLeadingDigitsOutput.innerHTML = leadingDigits;
+                personYear.innerHTML = val.substring(0, 2);
+                personMonth.forEach(m => m.innerHTML = val.substring(2,4));
+                personRest.innerHTML = val.substring(4,6) + '-' + val.substring(6,9);
+                personControl.forEach(c => c.innerHTML = val.substring(9));
+            };
+
+            const showCompanyLegend = (val) => {
+                companyLegend.style.display = 'flex';
+                companyId.forEach(c => c.innerHTML = val.substring(0,1));
+                companySecond.innerHTML = val.substring(1,2);
+                companySecondPair.forEach(c => c.innerHTML = val.substring(2,4));
+                companyRest.innerHTML = val.substring(4,6) + '-' + val.substring(6,9);
+                companyControlDigit.forEach(c => c.innerHTML =  val.substring(9));
+            };
+            
             orgNumInput.addEventListener('change', (e) => {
                 let val = e.currentTarget.value.replace('-', '').trim();
+                let leadingDigits = '';
+
+                resetVisibility();
 
                 if (val.length === 12) {
+                    leadingDigits = val.substring(0, 2);
                     val = val.substring(2);
                 }
 
-                const first = val.substring(0,1);
                 const secondPair = parseInt(val.substring(2,4), 10);
 
-                if (val.length !== 10 || !validLuhn(val) || (secondPair > 12 && secondPair < 20)) {
+                if (isNaN(val) || val.length !== 10 || !validLuhn(val) || (secondPair > 12 && secondPair < 20)) {
                     orgNumInvalid.style.display = 'block';
-                    orgNumOutput.style.display = 'none';
-                    companyTypeOutput.innerHTML = 'OGILTIGT';
-                    return
+                    return;
                 }
 
-                orgNumInvalid.style.display = 'none';
                 orgNumOutput.style.display = 'block';
 
                 if (parseInt(secondPair, 10) <= 12) {
                     companyTypeOutput.innerHTML = 'Enskild firma';
+                    showPersonLegend(leadingDigits, val);
                     return;
                 }
 
-                companyTypeOutput.innerHTML = orgTypeMap[first];
+                companyTypeOutput.innerHTML = orgTypeMap[val.substring(0,1)];
+                showCompanyLegend(val);
             });
         </script>
     </body>
