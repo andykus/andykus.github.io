@@ -1,223 +1,254 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Timeskip working hours calculator</title>
-		<style>
-			body {
-				background-color: #e1e5ea;
-				flex: 1;
-			}
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Marginalberäkning</title>
+    <style>
+        body {
+            background-color: #fff;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            display: flex;
+            padding: 0;
+            margin: 0;
+            flex-direction: column;
+        }
 
-			#container {
-				background-color: #fff;
+        h4 { 
+            margin: 0;
+            font-weight: bolder;
+        }
 
-			}
+        .spacer {
+            height: 20px;
+        }
 
-			.form-style-10{
-	width:450px;
-	padding:30px;
-	margin:40px auto;
-	background: #FFF;
-	border-radius: 10px;
-	-webkit-border-radius:10px;
-	-moz-border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-}
-.form-style-10 .inner-wrap{
-	padding: 30px;
-	background: #F8F8F8;
-	border-radius: 6px;
-	margin-bottom: 15px;
-}
-.form-style-10 h1{
-	background: #2A88AD;
-	padding: 20px 30px 15px 30px;
-	margin: -30px -30px 30px -30px;
-	border-radius: 10px 10px 0 0;
-	-webkit-border-radius: 10px 10px 0 0;
-	-moz-border-radius: 10px 10px 0 0;
-	color: #fff;
-	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
-	font: normal 30px 'Bitter', serif;
-	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	border: 1px solid #257C9E;
-}
-.form-style-10 h1 > span{
-	display: block;
-	margin-top: 2px;
-	font: 13px Arial, Helvetica, sans-serif;
-}
-.form-style-10 label{
-	display: block;
-	font: 13px Arial, Helvetica, sans-serif;
-	color: #888;
-	margin-bottom: 15px;
-}
-.form-style-10 input[type="text"],
-.form-style-10 input[type="date"],
-.form-style-10 input[type="datetime"],
-.form-style-10 input[type="email"],
-.form-style-10 input[type="number"],
-.form-style-10 input[type="search"],
-.form-style-10 input[type="time"],
-.form-style-10 input[type="url"],
-.form-style-10 input[type="password"],
-.form-style-10 textarea,
-.form-style-10 select {
-	display: block;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	width: 100%;
-	padding: 8px;
-	border-radius: 6px;
-	-webkit-border-radius:6px;
-	-moz-border-radius:6px;
-	border: 2px solid #fff;
-	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-	-moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-	-webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-}
+        input[type="text"] {
+            height: 3em;
+            border-radius: 10px;
+            padding-left: 10px;
+            border-color: #ccc;
+            width: 90%;
+        }
 
-.form-style-10 .section{
-	font: normal 20px 'Bitter', serif;
-	color: #2A88AD;
-	margin-bottom: 5px;
-}
-.form-style-10 .section span {
-	background: #2A88AD;
-	padding: 5px 10px 5px 10px;
-	position: absolute;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	border: 4px solid #fff;
-	font-size: 14px;
-	margin-left: -45px;
-	color: #fff;
-	margin-top: -3px;
-}
-.form-style-10 input[type="button"], 
-.form-style-10 input[type="submit"]{
-	background: #2A88AD;
-	padding: 8px 20px 8px 20px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	color: #fff;
-	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
-	font: normal 30px 'Bitter', serif;
-	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	border: 1px solid #257C9E;
-	font-size: 15px;
-}
-.form-style-10 input[type="button"]:hover, 
-.form-style-10 input[type="submit"]:hover{
-	background: #2A6881;
-	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-}
-.form-style-10 .privacy-policy{
-	float: right;
-	width: 250px;
-	font: 12px Arial, Helvetica, sans-serif;
-	color: #4D4D4D;
-	margin-top: 10px;
-	text-align: right;
-}
-		</style>
-		<body>
-			<div class="form-style-10">
-			<h1>Vad ska jag stämpla?<span>För att huvudräkning är svårt.</span></h1>
-			<form>
-				<div class="section"><span>1</span>Kom hit</div>
-				<div class="inner-wrap">
-					<input type="text" id="inTime" />
-				</div>
+        #header {
+            width: 100%;
+            height: 4em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px -6px #222;
+        }
 
-				<div class="section"><span>2</span>Gick hem <div id="earliest-quit"></div></div>
-				<div class="inner-wrap">
-					<input type="text" id="outTime" />
-				</div>
+        #content {
+            padding: 10px;
+            width: 100%;
+        }
 
-				<div class="section"><span>3</span>Minuter lunch</div>
-					<div class="inner-wrap">
-					<input type="text" value="30"id="lunchTime" />
-				</div>
-				<div class="button-section">
-				<center><input type="button" id="calculate" value="Räkna ut" /></center>
-				</div>
-			</form>
-			<span id="result-section">
-				<br>
-				<center><h2 id="result">00:00</h2></center>
-			</span>
-			</div>
-			<script src="moment.min.js"></script>
-			<script>
-				window.onload = () => {
-               const getWorkingHours = () => {
-                  const currentMonth = moment().month() + 1;
-                  return [6,7,8].includes(currentMonth) ? 7 : 8;
-               };
+        #clear {
+            justify-self: flex-end;
+        }
 
-					const inField = document.querySelector('#inTime');
-					const outField = document.querySelector('#outTime');
-					const lunchField = document.querySelector('#lunchTime');
-					const theButton = document.querySelector('#calculate');
-					const theResultSection = document.querySelector('#result-section');
-					const theResult = document.querySelector('#result');
-					const earliestQuit = document.querySelector('#earliest-quit');
+        .link {
+            color: cornflowerblue;
+            font-weight: bold;
+        }
 
-					inField.focus();
+        .field {
+            display: flex;
+            flex-direction: column-reverse;
+            width: 100%;
+        }
 
-					inField.onblur = () => {
-						const inTime = moment(inField.value, 'HH:mm');
-						const estimatedLeave = inTime
-							.add(getWorkingHours(), 'hours')
-							.add(11, 'minutes')
-							.add(parseInt(lunchField.value, 10), 'minutes')
+        label {
+            padding-left: 2px;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
 
-						if (!estimatedLeave.isValid()) {
-							earliestQuit.innerHTML = '';
-							return;
-						}
+        input {
+            border: 2px solid black;
+        }
 
-						earliestQuit.innerHTML = `(tidigast ${estimatedLeave.hours()}:${estimatedLeave.minutes()})`;
-					};
+        input:focus {
+            outline: none;
+            border-color: cornflowerblue;
+            box-shadow: 0 0 5px rgba(100, 149, 237, 0.5);
+        }
 
-					lunchField.onblur = () => {
-						const inTime = moment(inField.value, 'HH:mm');
+        input:focus + label {
+            color: cornflowerblue;
+        }
 
-						const estimatedLeave = inTime
-							.add(getWorkingHours(), 'hours')
-							.add(11, 'minutes')
-							.add(parseInt(lunchField.value, 10), 'minutes')
+        ul.tab {
+            list-style-type:none;
+            margin: 0;
+            padding:0;
+        }
 
-							if (!estimatedLeave.isValid()) {
-							earliestQuit.innerHTML = '';
-							return;
-						}
+        ul.tab li {
+            float: left;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
 
-						earliestQuit.innerHTML = `(tidigast ${estimatedLeave.hours()}:${estimatedLeave.minutes()})`;	
-					};
 
-					calculate.onclick = () => {
-						const inTime = moment(inField.value, 'HH:mm');
-						const outTime = moment(outField.value, 'HH:mm');
-						const duration = moment.duration(outTime.diff(inTime));
+        ul.tab li label {
+            background: white;  
+            border: 1px solid #ccc;
+            height: 3em;
+            display: flex;
+            border-radius: 10px;
+            margin-right: 5px;
+            justify-content: center;
+            align-items: center;
+            justify-self: stretch;
+            flex: 1;
+            padding: 0 2em 0 2em;
+        }
 
-						duration.subtract(parseInt(lunchField.value, 10), 'minutes');
-						theResult.innerHTML = `${duration.hours()}:${duration.minutes()}`;
-					};
-				};	
-			</script>
-		</body>
-	</head>
+        ul.tab li input[type="radio"] {
+            opacity: 0;
+            width:1px;
+            height:1px;
+            display: none;
+        }
+
+        ul.tab li input[type="radio"]:checked ~ label {
+            background: cornflowerblue;
+            color: white;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+        <div style="padding-left: 10px">
+            <h4>Marginalräknare</h4>
+        </div>
+        <div style="padding-right: 10px">
+            <span class="link" id="clear">Rensa</span>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+    <div id="content">
+        <div class="field">
+            <input type="text" inputmode="decimal" id="netPurchasePrice" value="0,00" />
+            <label for="netPurchasePrice">Inköpspris netto (Kr)</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="field">
+            <input type="text" inputmode="decimal" id="marginPercent" value="0,00" />
+            <label for="marginPercent">Marginal (%)</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="field">
+            <input type="text" inputmode="decimal" id="marginValue" value="0,00" />
+            <label for="marginValue">Marginal (Kr)</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="field">
+            <input type="text" inputmode="decimal" id="salesPrice" value="0,00" />
+            <label for="salesPrice">Försäljningspris (Kr)</label>
+        </div>
+        <div class="spacer"></div>
+        <di class="field">
+            <ul class="tab" id="vat">
+                <li>
+                    <input id="tab1" checked="checked" type="radio" name="vat" value="25" />
+                    <label for="tab1">25%</label>
+                </li>
+                <li>
+                    <input id="tab2" type="radio" name="vat" value="12" />
+                    <label for="tab2">12%</label>
+                </li>
+                <li>
+                    <input id="tab3" type="radio" name="vat" value="6" />
+                    <label for="tab3">6%</label>
+                </li>
+            </ul>
+            <label for="vat">Moms</label>
+        </div>
+    </div>
+	<script>
+        const clearButtonEl = document.querySelector('#clear');
+        const purchasePriceEl = document.querySelector('#netPurchasePrice');
+        const marginPercentEl = document.querySelector('#marginPercent');
+        const marginValueEl = document.querySelector('#marginValue');
+        const salesPriceEl = document.querySelector('#salesPrice');
+        const selectedVat = document.querySelector('input[name="vat"]:checked').value;
+
+        const parseInput = inputEl => {
+            return parseFloat(inputEl.value.replace(',', '.').replace(/\s/, ''));
+        }
+        const formatOutput = val => val.toLocaleString('sv-SE', { 
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2
+         });
+
+        const calculateMarginValue = (purchasePrice, marginPercent) => {
+            return purchasePrice * (marginPercent / 100); // Kanske..?
+        };
+
+        const calculateMarginPercent = (purchasePrice, marginValue) => {
+            return (marginValue / purchasePrice) * 100; // Kanske..?
+        };
+
+        const calculateSalesPrice = (purchasePrice, marginValue, vatPercent) => {
+            return purchasePrice + marginValue; // Plus moms!
+        };
+
+        clearButtonEl.addEventListener('click', () => {
+            purchasePriceEl.value = '0,00';
+            marginPercentEl.value = '0,00';
+            marginValueEl.value = '0,00';
+            salesPriceEl.value = '0,00';
+        });
+
+        purchasePriceEl.addEventListener('change', (e) => {
+            const purchasePrice = parseInput(e.target);
+            const marginPercent = parseInput(marginPercentEl);
+            const marginValue = calculateMarginValue(purchasePrice, marginPercent);
+            const salesPrice = calculateSalesPrice(purchasePrice, marginValue, selectedVat);
+
+            marginValueEl.value = formatOutput(marginValue);
+            salesPriceEl.value = formatOutput(salesPrice);
+            purchasePriceEl.value = formatOutput(purchasePrice);
+        });
+
+        marginPercentEl.addEventListener('change', (e) => {
+            const marginPercent = parseInput(e.target);
+            const purchasePrice = parseInput(purchasePriceEl);
+            const marginValue = calculateMarginValue(purchasePrice, marginPercent);
+            const salesPrice = calculateSalesPrice(purchasePrice, marginValue, selectedVat);
+
+            marginValueEl.value = formatOutput(marginValue);
+            salesPriceEl.value = formatOutput(salesPrice);
+            marginPercentEl.value = formatOutput(marginPercent);
+        });
+
+        marginValueEl.addEventListener('change', (e) => {
+            const marginValue = parseInput(e.target);
+            const purchasePrice = parseInput(purchasePriceEl);
+            const marginPercent = calculateMarginPercent(purchasePrice, marginValue);
+            const salesPrice = calculateSalesPrice(purchasePrice, marginValue, selectedVat);
+
+            marginPercentEl.value = formatOutput(marginPercent);
+            salesPriceEl.value = formatOutput(salesPrice);
+            marginValueEl.value = formatOutput(marginValue);
+        });
+
+        salesPriceEl.addEventListener('change', (e) => {
+            const salesPrice = parseInput(e.target);
+            const purchasePrice = parseInput(purchasePriceEl);
+
+            // TODO Trött nu.
+
+        });
+    </script>
+  </body>
 </html>
